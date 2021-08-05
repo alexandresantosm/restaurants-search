@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
-import Slider from 'react-slick';
 
 import LogoImage from '../../assets/logo.svg';
 import RestaurantImage from '../../assets/restaurant-fake.png';
 
-import { Wrapper, Container, Search, Logo, Map, Carousel, CarouselTitle } from './styles';
+import ImageCard from '../../components/ImageCard';
+
+import {
+  Wrapper,
+  Container,
+  Search,
+  Logo,
+  Map,
+  Carousel,
+  CarouselTitle,
+  CarouselSlider,
+} from './styles';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -41,43 +51,12 @@ export default function Home() {
         <Carousel>
           <CarouselTitle>Na sua Área</CarouselTitle>
 
-          <Slider {...settings}>
-            <div>
-              <img
-                src={RestaurantImage}
-                alt="Restautante
-              fake"
-              />
-            </div>
-            <div>
-              <img
-                src={RestaurantImage}
-                alt="Restautante
-              fake"
-              />
-            </div>
-            <div>
-              <img
-                src={RestaurantImage}
-                alt="Restautante
-              fake"
-              />
-            </div>
-            <div>
-              <img
-                src={RestaurantImage}
-                alt="Restautante
-              fake"
-              />
-            </div>
-            <div>
-              <img
-                src={RestaurantImage}
-                alt="Restautante
-              fake"
-              />
-            </div>
-          </Slider>
+          <CarouselSlider {...settings}>
+            <ImageCard photo={RestaurantImage} title="Fogão à lenha" />
+            <ImageCard photo={RestaurantImage} title="Fogão à lenha" />
+            <ImageCard photo={RestaurantImage} title="Fogão à lenha" />
+            <ImageCard photo={RestaurantImage} title="Fogão à lenha" />
+          </CarouselSlider>
         </Carousel>
       </Container>
 

@@ -1,3 +1,4 @@
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -39,6 +40,12 @@ export const CarouselTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 2rem;
+`;
+
+export const CarouselSlider = styled(Slider)`
+  .slick-slide:not(:last-child) {
+    margin-right: 1rem;
+  }
 `;
 
 export const Map = styled.div`
