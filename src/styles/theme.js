@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   colors: {
     primary: '#6200ee',
     background: '#00000014',
@@ -9,3 +9,5 @@ export const theme = {
     regular: 'Roboto, sans-serif',
   },
 };
+
+export default theme;
