@@ -5,8 +5,7 @@ import MaterialIcon from '@material/react-material-icon';
 import LogoImage from '../../assets/logo.svg';
 import RestaurantImage from '../../assets/restaurant-fake.png';
 
-import ImageCard from '../../components/ImageCard';
-import RestaurantCard from '../../components/RestaurantCard';
+import { ImageCard, RestaurantCard, Modal } from '../../components';
 
 import {
   Wrapper,
@@ -21,6 +20,7 @@ import {
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
+  const [isOpenedModal, setIsOpenedModal] = useState(true);
 
   function handleInputValue(event) {
     const { value } = event.currentTarget;
@@ -70,6 +70,8 @@ export default function Home() {
       <Map>
         <h1>Mapa</h1>
       </Map>
+
+      <Modal open={isOpenedModal} onClose={() => setIsOpenedModal(!isOpenedModal)} />
     </Wrapper>
   );
 }
