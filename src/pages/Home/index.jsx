@@ -6,6 +6,7 @@ import LogoImage from '../../assets/logo.svg';
 import RestaurantImage from '../../assets/restaurant-fake.png';
 
 import ImageCard from '../../components/ImageCard';
+import RestaurantCard from '../../components/RestaurantCard';
 
 import {
   Wrapper,
@@ -58,6 +59,12 @@ export default function Home() {
             <ImageCard photo={RestaurantImage} title="Fogão à lenha" />
           </CarouselSlider>
         </Carousel>
+
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
       </Container>
 
       <Map>
