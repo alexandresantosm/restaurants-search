@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
 
-import RestaurantImage from '../../assets/restaurant-fake.png';
+import RestaurantImage from '../../assets/restaurant-photo-default-50.png';
 
 import { Container, RestaurantInfo, Title, Address, RestaurantPhoto } from './styles';
 
-export default function RestaurantCard() {
+export default function RestaurantCard({ restaurant }) {
   return (
     <Container>
       <RestaurantInfo>
-        <Title>Nome do restaurante</Title>
-        <ReactStars count={5} isHalf edit={false} value={4} activeColor="#6200ee" />
-        <Address>Estrada do Siqueira, 134</Address>
+        <Title>{restaurant.name}</Title>
+        <ReactStars count={5} isHalf edit={false} value={restaurant.rating} activeColor="#6200ee" />
+        <Address>{restaurant.vicinity || restaurant.formatted_address}</Address>
       </RestaurantInfo>
-      <RestaurantPhoto src={RestaurantImage} alt="Restaurante Fake" />
+      <RestaurantPhoto
+        src={restaurant.photos ? restaurant.photos[0].getUrl() : RestaurantImage}
+        alt={
+          restaurant.photos
+            ? `Foto do restaurante ${restaurant.name}`
+            : 'Foto padrão de restaurante'
+        }
+      />
     </Container>
   );
 }
