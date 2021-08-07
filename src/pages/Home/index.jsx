@@ -5,14 +5,13 @@ import MaterialIcon from '@material/react-material-icon';
 import LogoImage from '../../assets/logo.svg';
 import RestaurantImage from '../../assets/restaurant-fake.png';
 
-import { ImageCard, RestaurantCard, Modal } from '../../components';
+import { ImageCard, RestaurantCard, Map, Modal } from '../../components';
 
 import {
   Wrapper,
   Container,
   Search,
   Logo,
-  Map,
   Carousel,
   CarouselTitle,
   CarouselSlider,
@@ -20,11 +19,18 @@ import {
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
-  const [isOpenedModal, setIsOpenedModal] = useState(true);
+  const [query, setQuery] = useState(null);
+  const [isOpenedModal, setIsOpenedModal] = useState(false);
 
   function handleInputValue(event) {
     const { value } = event.currentTarget;
     setInputValue(value);
+  }
+
+  function handleOnKeyPress(event) {
+    if (event.key === 'Enter') {
+      setQuery(inputValue);
+    }
   }
 
   const settings = {
@@ -45,7 +51,11 @@ export default function Home() {
             label="Pesquisar Restaurantes"
             outlined
             trailingIcon={<MaterialIcon role="button" icon="search" />}>
-            <Input value={inputValue} onChange={(event) => handleInputValue(event)} />
+            <Input
+              value={inputValue}
+              onKeyPress={handleOnKeyPress}
+              onChange={(event) => handleInputValue(event)}
+            />
           </TextField>
         </Search>
 
@@ -66,10 +76,7 @@ export default function Home() {
         <RestaurantCard />
         <RestaurantCard />
       </Container>
-
-      <Map>
-        <h1>Mapa</h1>
-      </Map>
+      <Map query={query} />
 
       <Modal open={isOpenedModal} onClose={() => setIsOpenedModal(!isOpenedModal)} />
     </Wrapper>
