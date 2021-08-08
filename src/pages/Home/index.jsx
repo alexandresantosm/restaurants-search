@@ -6,7 +6,7 @@ import MaterialIcon from '@material/react-material-icon';
 import LogoImage from '../../assets/logo.svg';
 import RestaurantImage from '../../assets/restaurant-photo-default-50.png';
 
-import { ImageCard, RestaurantCard, Map, Modal } from '../../components';
+import { ImageCard, RestaurantCard, Map, Modal, Loader } from '../../components';
 
 import {
   Wrapper,
@@ -71,17 +71,24 @@ export default function Home() {
         </Search>
 
         <Carousel>
-          <CarouselTitle>Na sua Área</CarouselTitle>
-
-          <CarouselSlider {...settings}>
-            {restaurants.map((restaurant) => (
-              <ImageCard
-                key={restaurant.place_id}
-                photo={restaurant.photos ? restaurant.photos[0].getUrl() : RestaurantImage}
-                title={restaurant.name}
-              />
-            ))}
-          </CarouselSlider>
+          {restaurants.length > 0 ? (
+            <>
+              <CarouselTitle>Na sua Área</CarouselTitle>
+              <CarouselSlider {...settings}>
+                {restaurants.map((restaurant) => (
+                  <ImageCard
+                    key={restaurant.place_id}
+                    photo={restaurant.photos ? restaurant.photos[0].getUrl() : RestaurantImage}
+                    title={restaurant.name}
+                  />
+                ))}
+              </CarouselSlider>
+            </>
+          ) : (
+            <>
+              <Loader />
+            </>
+          )}
         </Carousel>
         {restaurants.map((restaurant) => (
           <RestaurantCard
