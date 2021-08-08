@@ -6,7 +6,7 @@ import MaterialIcon from '@material/react-material-icon';
 import LogoImage from '../../assets/logo.svg';
 import RestaurantImage from '../../assets/restaurant-photo-default-50.png';
 
-import { ImageCard, RestaurantCard, Map, Modal, Loader } from '../../components';
+import { ImageCard, RestaurantCard, Map, Modal, Loader, Skeleton } from '../../components';
 
 import {
   Wrapper,
@@ -99,17 +99,27 @@ export default function Home() {
         ))}
       </Container>
       <Map query={query} placeId={restaurantId} />
-
       <Modal open={isOpenedModal} onClose={() => setIsOpenedModal(!isOpenedModal)}>
-        <ModalTitle>{restaurantSelected?.name}</ModalTitle>
-        <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
-        <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
+        {restaurantSelected ? (
+          <>
+            <ModalTitle>{restaurantSelected?.name}</ModalTitle>
+            <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
+            <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
 
-        <ModalContent>
-          {restaurantSelected?.opening_hours?.open_now
-            ? 'Aberto agora :)'
-            : 'Fechado neste momento :('}
-        </ModalContent>
+            <ModalContent>
+              {restaurantSelected?.opening_hours?.open_now
+                ? 'Aberto agora :)'
+                : 'Fechado neste momento :('}
+            </ModalContent>
+          </>
+        ) : (
+          <>
+            <Skeleton width="10px" height="10px" />
+            <Skeleton width="10px" height="10px" />
+            <Skeleton width="10px" height="10px" />
+            <Skeleton width="10px" height="10px" />
+          </>
+        )}
       </Modal>
     </Wrapper>
   );
