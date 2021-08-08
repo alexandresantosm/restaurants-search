@@ -114,10 +114,10 @@ export default function Home() {
           </>
         ) : (
           <>
-            <Skeleton width="10px" height="10px" />
-            <Skeleton width="10px" height="10px" />
-            <Skeleton width="10px" height="10px" />
-            <Skeleton width="10px" height="10px" />
+            <Skeleton width="0.625rem" height="0.625rem" />
+            <Skeleton width="0.625rem" height="0.625rem" />
+            <Skeleton width="0.625rem" height="0.625rem" />
+            <Skeleton width="0.625rem" height="0.625rem" />
           </>
         )}
       </Modal>
