@@ -11,6 +11,8 @@ export function MapContainer(props) {
   const { google, query, placeId } = props;
 
   function searchByQuery(query) {
+    dispatch(setRestaurants([]));
+
     const service = new google.maps.places.PlacesService(map);
 
     const request = {
@@ -37,6 +39,8 @@ export function MapContainer(props) {
   function getRestaurantDetailsById(placeId) {
     const service = new google.maps.places.PlacesService(map);
 
+    dispatch(setRestaurant(null));
+
     const request = {
       placeId,
       fields: ['name', 'opening_hours', 'formatted_address', 'formatted_phone_number'],
@@ -58,6 +62,8 @@ export function MapContainer(props) {
 
   function searchNearby(map, center) {
     const service = new google.maps.places.PlacesService(map);
+
+    dispatch(setRestaurants([]));
 
     const request = {
       location: center,
