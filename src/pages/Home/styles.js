@@ -44,7 +44,7 @@ export const CarouselTitle = styled.h2`
 
 export const CarouselSlider = styled(Slider)`
   .slick-slide:not(:last-child) {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -57,4 +57,21 @@ export const Map = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
+`;
+
+export const ModalTitle = styled.p`
+  margin-top: 0.625rem;
+  letter-spacing: 0.006875rem;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
+`;
+
+export const ModalContent = styled.p`
+  margin-top: 0.625rem;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.1875rem;
 `;
